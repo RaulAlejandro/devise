@@ -1,0 +1,115 @@
+<%= form_for(resource, :as => resource_name, :url => tin_usuario_session_path(resource_name), :remote => true, :format => :js, :html => {:class => "form-signin"}) do |f| %>
+  <div><%= f.label :usuario %><br />
+  <%= f.text_field :usuario %></div>
+
+  <div><%= f.label :clave %><br />
+  <%= f.password_field :clave %></div>
+
+  <div><%= f.submit "Sign in" %></div>
+  <%= button_tag 'Sign In', type: 'button',class: 'ajax-signin-btn' %>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="ajaxLoginFormModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ajax-login-form">
+
+      <div class="modal-body">
+        <%= form_tag tin_usuario_session_path, method: :post, format: :json do %>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                      <div class="form-group">
+                        <%= text_field_tag 'usuario', nil, class: 'form-control', placeholder: 'Usuario' %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                      <div class="form-group">
+                        <%= password_field_tag 'clave', nil, class: 'form-control', placeholder: 'Password', autocomplete: 'off' %>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="row">
+                    <div class="col-md-12 col-xs-12">
+                      <div class="form-group">
+                        <div class="checkbox">
+                          <label>
+                            <%#= check_box_tag 'user[remember_me]', '1', class: 'checkbox' %> Remember me
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>-->
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                      <div class="form-group">
+                        <%= button_tag 'Sign In', type: 'button',class: 'ajax-signin-btn' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--<div class="col-md-6 col-xs-12">
+                  <div class="login-or-label">- OR - </div>
+                  <div class="social-login">
+                    <%#= link_to image_tag('images/facebook-login-button.png', alt:  "Facebook Login"), omniauth_authorize_path('user', :facebook) %>
+                  </div>
+                  <div class="social-login">
+                    <%#= link_to image_tag('images/login-twitter.png', alt:  "Twitter Login"), omniauth_authorize_path('user', :twitter) %>
+                  </div>
+                </div>-->
+              </div>
+        <% end %>
+        </div>
+
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<%= form_for(resource, as: resource_name, url: tin_usuario_session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :usuario %><br />
+    <%= f.text_field :usuario, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :clave %><br />
+    <%= f.password_field :clave, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>

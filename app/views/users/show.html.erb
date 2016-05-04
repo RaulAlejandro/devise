@@ -1,0 +1,50 @@
+<!--<h2>Edit <%#= resource_name.to_s.humanize %></h2>-->
+
+
+<%#= form_for("user", :url => user_session_path, :html => {:id => "sign_in", :class => "span3"}, :remote => true, :format => :json) do |f| %>
+
+<%= form_for("user", html: { :id => "updateUser", :class => "span3" }, :remote => true, :format => :json) do |f| %>
+
+  <%#= devise_error_messages! %>
+          
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+          <h1 class="text-center login-title">EDITAR USUARIO</h1>
+
+              <%= f.label :email %>
+              <%= f.email_field :email, :class => 'form-control', autofocus: true, :value => @user.email  %>
+              <br>
+              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+              <%= f.password_field :password, :class => 'form-control', autocomplete: "off" %>
+              <br>
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, :class => 'form-control', autocomplete: "off" %>
+              <br>
+              <%#= f.label :current_password %><!-- <i>(we need your current password to confirm your changes)</i><br />
+              <%#= f.password_field :current_password, :class => 'form-control', autocomplete: "off" %>
+              <br>-->
+              <!--<div class="actions">
+                <%#= f.submit "Update" %>
+              </div>-->
+              <%= button_tag 'UPDATE', type: 'button',class: 'btn btn-lg btn-primary btn-block update' %>
+        </div>
+      </div>
+      <div class="row">
+        <div align="center" class="col-sm-6 col-md-4 col-md-offset-4">
+            <!--<h3 align="center">Cancelar mi Cuenta</h3>-->
+            <br>
+            <p><%#= button_to "Cancelar Cuenta", registration_path(resource_name), data: { confirm: "Seguro Desea Cancelar Cuenta" }, method: :delete %></p>
+
+            <%= link_to "Atras", :back %>          
+        </div>        
+      </div>
+    </div>
+    <%= f.text_field :id, :value => @user.id  %>
+
+<% end %>
+
+<%= javascript_include_tag "tin_usuarios" %>
+
+
+

@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Liistado de Usuarios</h2>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Email</th>
+        <th>Profile</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.profile %></td>
+            <td>
+              <%= link_to('Editar', destroy_user_session_path, :class => 'editUser') %>
+              <%= link_to("Eliminar", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') %>
+            </td>
+        </tr>
+      <% end %>	
+    </tbody>
+  </table>
+</div>

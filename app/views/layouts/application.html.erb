@@ -1,0 +1,46 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Devise</title>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</head>
+  <%= csrf_meta_tags %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+<body>
+
+<%#= yield %>
+
+</body>
+</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administracion de Usuarios</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <%#= javascript_include_tag 'https://js.stripe.com/v2/' %>
+
+    <%= csrf_meta_tags %>
+
+  </head>
+  <body>
+        <% if user_signed_in? %>
+          <%= render 'layouts/navegation' %>
+        <% end %>
+
+        <p class="alert-success"><%= notice %></p>
+        <p class="alert-danger"><%= alert %></p>
+        <%= yield %>
+
+  </body>
+</html>

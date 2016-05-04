@@ -1,0 +1,16 @@
+<% if current_user %>
+
+		<% if current_user.profile == "admin" %>		
+   				<%= render :partial => 'admin'%>
+   		<% else %>
+   		   		<%= render :partial => 'username'%>
+   		<% end %>
+
+   	    
+   	   	<%#= link_to('Cerrar Sesión', destroy_user_session_path, :method => :delete, :class => 'logout') %>
+   	   	
+<%#   else %>
+
+   <%#= link_to('Iniciar Sesión', new_user_session_path, :method => :get) %>
+
+<%   end  %>

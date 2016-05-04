@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div align="left" class="col-md-9">
+      <h2>Liistado de Usuarios</h2>  
+    </div>
+    <div class="col-md-3">
+      <h3><%= link_to('Nuevo Usuario', new_user_path ) %></h3>
+    </div>    
+  </div>          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Email</th>
+        <th>Profile</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.profile %></td>
+            <td>
+              <%= link_to('Editar', user_path(user) ) %>
+              <%= link_to("Eliminar", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') %>
+            </td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>
